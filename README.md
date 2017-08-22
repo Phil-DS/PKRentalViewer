@@ -22,4 +22,4 @@ The easiest method. Just copy the QR code onto the clipboard and click "From Cli
  * The MemeCrypto came from [PKHex](https://www.nuget.org/packages/ZXing.Net/). It is licensed under [GPL V3](https://github.com/kwsch/PKHeX/blob/master/LICENSE.md]
 
 ## Update History
-Version 0: First Release.
+22/08/2017 Version 0.1: Added Hidden Power type to the move outputs if Hidden Power is found. 
