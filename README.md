@@ -11,8 +11,9 @@ The easiest method. Just copy the QR code onto the clipboard and click "From Cli
 ## Known Issues
  * Images for the Pokemon are not implemented as of yet
  * Abilities are labeled at 1,2,4 (These still need to be converted)
- * Some teams have really weird IVs, and sometimes do not match up with hyper training maps.
  * Forms are not implemented as of yet.
+ * Some teams have really weird IVs, and sometimes do not match up with what it looks like in game.
+ * Some data validation is missing, and thus can crash at some points
 
 ## Dependencies
 
