@@ -114,8 +114,40 @@ namespace Project_Riolu
             }
         }
 
+        public String getHiddenPowerType()
+        {
+            string rtn = "";
+            int type = IVs[0] % 2 + (IVs[1] % 2) * 2 + (IVs[2] % 2) * 4 + (IVs[5] % 2) * 8 + (IVs[3] % 2) * 16 + (IVs[4] % 2) * 32;
+            type = (type * 15) / 63;
+            switch (type)
+            {
+                case 0: rtn = "Fighting"; break;
+                case 1: rtn = "Flying"; break;
+                case 2: rtn = "Poison"; break;
+                case 3: rtn = "Ground"; break;
+                case 4: rtn = "Rock"; break;
+                case 5: rtn = "Bug"; break;
+                case 6: rtn = "Ghost"; break;
+                case 7: rtn = "Steel"; break;
+                case 8: rtn = "Fire"; break;
+                case 9: rtn = "Water"; break;
+                case 10: rtn = "Grass"; break;
+                case 11: rtn = "Electric"; break;
+                case 12: rtn = "Psychic"; break;
+                case 13: rtn = "Ice"; break;
+                case 14: rtn = "Dragon"; break;
+                case 15: rtn = "Dark"; break;
+            }
+            return rtn;
+        }
+
         public string ToShowdownFormat(bool HT)
         {
+            /* TODO:
+             *  - Add the ability to remove the IVs.
+             *  - Add the Hidden Power type.
+             * */
+
             string HTFlags = Convert.ToString(HyperTrainingFlags, 2);
             string[] IVString = new string[6];
             for (int i = 0; i < 30 - HTFlags.Length; i++)
@@ -151,10 +183,10 @@ namespace Project_Riolu
                 "EVs: " + EffortHp + " HP / " + EffortAtk + " Atk / " + EffortDef + " Def / " + EffortSpAtk + " SpA / " + EffortSpDef + " SpD / " + EffortSpeed + " Spe",
                 DataFetch.getNature(Nature) + " Nature",
                 "IVs: " + IVString[0] + " HP / " + IVString[1] + " Atk / " + IVString[2] + " Def / " + IVString[3] + " SpA / " + IVString[4] + " SpD / " + IVString[5] + " Spe ",
-                "- " + DataFetch.getMove(Moves[0]),
-                "- " + DataFetch.getMove(Moves[1]),
-                "- " + DataFetch.getMove(Moves[2]),
-                "- " + DataFetch.getMove(Moves[3])
+                " - " + DataFetch.getMove(Moves[0],this),
+                " - " + DataFetch.getMove(Moves[1],this),
+                " - " + DataFetch.getMove(Moves[2],this),
+                " - " + DataFetch.getMove(Moves[3],this)
             };
 
             return string.Join("\n", format);
@@ -203,10 +235,10 @@ namespace Project_Riolu
         {
             string[] format =
             {
-                " - " + DataFetch.getMove(Moves[0]),
-                " - " + DataFetch.getMove(Moves[1]),
-                " - " + DataFetch.getMove(Moves[2]),
-                " - " + DataFetch.getMove(Moves[3])
+                " - " + DataFetch.getMove(Moves[0],this),
+                " - " + DataFetch.getMove(Moves[1],this),
+                " - " + DataFetch.getMove(Moves[2],this),
+                " - " + DataFetch.getMove(Moves[3],this)
             };
 
             return string.Join("\n", format);
