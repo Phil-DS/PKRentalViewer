@@ -20,3 +20,6 @@ The easiest method. Just copy the QR code onto the clipboard and click "From Cli
  * The AES-CTR uses [Bouncy Castle](http://www.bouncycastle.org/csharp/licence.html) to decrypt. This is licensed as stated [here](http://www.bouncycastle.org/csharp/licence.html)
  * The QR decoder is from [ZXing.Net](https://www.nuget.org/packages/ZXing.Net/). It is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
  * The MemeCrypto came from [PKHex](https://www.nuget.org/packages/ZXing.Net/). It is licensed under [GPL V3](https://github.com/kwsch/PKHeX/blob/master/LICENSE.md]
+
+## Update History
+Version 0: First Release.
