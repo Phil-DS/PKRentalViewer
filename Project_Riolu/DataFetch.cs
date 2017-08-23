@@ -20,11 +20,15 @@ namespace Project_Riolu
                 return ID.ToString();
             }
         }
-        public static string getMove(ushort ID)
+        public static string getMove(ushort ID, Pokemon p)
         {
             string[] names = getList("Moves");
             try
             {
+                if(names[ID] == "Hidden Power")
+                {
+                    return "Hidden Power [" + p.getHiddenPowerType() + "]";
+                }
                 return names[ID];
             }
             catch (Exception e)
@@ -32,9 +36,11 @@ namespace Project_Riolu
                 return ID.ToString();
             }
         }
-        public static string getAbility(ushort ID, int form)
+        public static string getAbility(ushort ID, int PID,int form)
         {
-            string[] names = getList("Abilities");
+            //Update to deal with the 1,2,4.
+            
+            /*string[] names = getList("Abilities");
             try
             {
                 return names[ID];
@@ -42,7 +48,10 @@ namespace Project_Riolu
             catch (Exception e)
             {
                 return ID.ToString();
-            }
+            }*/
+
+            return "Not Implemented";
+
         }
         public static string getItem(ushort ID)
         {

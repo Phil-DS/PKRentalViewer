@@ -36,6 +36,8 @@ namespace Project_Riolu
         byte CassetteVersion;
         byte LangId;
         byte[] rawData;
+        string gender;
+        int formID;
         int[] IVs;
 
         public Pokemon(byte[] pkmData)
@@ -67,7 +69,14 @@ namespace Project_Riolu
                 field_20 = pkmData[32];
                 AbilityFlags = pkmData[33];
                 Nature = pkmData[34];
+
                 EncounterFlags = pkmData[35];
+                //From Project Pokemon. 
+                //Stored as: Bit 0: Fateful Encounter, Bit 1: Female, Bit 2: Genderless, Bits 3-7: Form Data.
+
+                gender = ((EncounterFlags & 0x2) != 0) ? "(F) " : ((EncounterFlags & 0x4) != 0) ? "" : "(M) ";
+                formID = EncounterFlags >> 3;
+
                 EffortHp = pkmData[36];
                 EffortAtk = pkmData[37];
                 EffortDef = pkmData[38];
@@ -76,36 +85,28 @@ namespace Project_Riolu
                 EffortSpDef = pkmData[41];
                 field_2A = pkmData[42];
                 Familiarity = pkmData[43];
+                
                 Pokeball = pkmData[44];
                 Level = pkmData[45];
                 CassetteVersion = pkmData[46];
                 LangId = pkmData[47];
 
-                //IVs = new int[6];
-
-                //split the IVs
-                string IV = Convert.ToString(IvFlags, 2);
-                Console.WriteLine(IV);
-                for (int i = 0; i < 30 - IV.Length; i++)
-                {
-                    IV = "0" + IV;
-                }
-
+                Console.WriteLine("Familiarity: " + formID);
+                
                 int[] IVTemp = new int[6];
-                char[] IVBits = IV.ToCharArray();
 
                 for (int i = 0; i < 6; i++)
                 {
-                    IVTemp[i] = Convert.ToInt32(new string(IVBits.Skip(i * 5).Take(5).ToArray()), 2);
+                    IVTemp[i] = ((int)IvFlags>>(i*5))&0x1F;
                 }
 
                 IVs = new int[6]{
-                    IVTemp[5],
-                    IVTemp[4],
-                    IVTemp[3],
-                    IVTemp[1],
                     IVTemp[0],
-                    IVTemp[2]
+                    IVTemp[1],
+                    IVTemp[2],
+                    IVTemp[4],
+                    IVTemp[5],
+                    IVTemp[3]
                 };
             }
             catch(Exception e)
@@ -114,8 +115,40 @@ namespace Project_Riolu
             }
         }
 
+        public String getHiddenPowerType()
+        {
+            string rtn = "";
+            int type = IVs[0] % 2 + (IVs[1] % 2) * 2 + (IVs[2] % 2) * 4 + (IVs[5] % 2) * 8 + (IVs[3] % 2) * 16 + (IVs[4] % 2) * 32;
+            type = (type * 15) / 63;
+            switch (type)
+            {
+                case 0: rtn = "Fighting"; break;
+                case 1: rtn = "Flying"; break;
+                case 2: rtn = "Poison"; break;
+                case 3: rtn = "Ground"; break;
+                case 4: rtn = "Rock"; break;
+                case 5: rtn = "Bug"; break;
+                case 6: rtn = "Ghost"; break;
+                case 7: rtn = "Steel"; break;
+                case 8: rtn = "Fire"; break;
+                case 9: rtn = "Water"; break;
+                case 10: rtn = "Grass"; break;
+                case 11: rtn = "Electric"; break;
+                case 12: rtn = "Psychic"; break;
+                case 13: rtn = "Ice"; break;
+                case 14: rtn = "Dragon"; break;
+                case 15: rtn = "Dark"; break;
+            }
+            return rtn;
+        }
+
         public string ToShowdownFormat(bool HT)
         {
+            /* TODO:
+             *  - Add the ability to remove the IVs.
+             *  - Add the Hidden Power type.
+             * */
+
             string HTFlags = Convert.ToString(HyperTrainingFlags, 2);
             string[] IVString = new string[6];
             for (int i = 0; i < 30 - HTFlags.Length; i++)
@@ -144,17 +177,17 @@ namespace Project_Riolu
 
             string[] format =
             {
-                DataFetch.getSpecies(MonsNo,0) + /*" (%Gender)*/" @ "+DataFetch.getItem(HoldItem),
+                DataFetch.getSpecies(MonsNo,0) + /*" ("  +")" +*/ " @ " + DataFetch.getItem(HoldItem),
                 "Ability: "+AbilityFlags,
                 "Level: "+Level,
                 "Happiness: 0",
                 "EVs: " + EffortHp + " HP / " + EffortAtk + " Atk / " + EffortDef + " Def / " + EffortSpAtk + " SpA / " + EffortSpDef + " SpD / " + EffortSpeed + " Spe",
                 DataFetch.getNature(Nature) + " Nature",
                 "IVs: " + IVString[0] + " HP / " + IVString[1] + " Atk / " + IVString[2] + " Def / " + IVString[3] + " SpA / " + IVString[4] + " SpD / " + IVString[5] + " Spe ",
-                "- " + DataFetch.getMove(Moves[0]),
-                "- " + DataFetch.getMove(Moves[1]),
-                "- " + DataFetch.getMove(Moves[2]),
-                "- " + DataFetch.getMove(Moves[3])
+                " - " + DataFetch.getMove(Moves[0],this),
+                " - " + DataFetch.getMove(Moves[1],this),
+                " - " + DataFetch.getMove(Moves[2],this),
+                " - " + DataFetch.getMove(Moves[3],this)
             };
 
             return string.Join("\n", format);
@@ -203,10 +236,10 @@ namespace Project_Riolu
         {
             string[] format =
             {
-                " - " + DataFetch.getMove(Moves[0]),
-                " - " + DataFetch.getMove(Moves[1]),
-                " - " + DataFetch.getMove(Moves[2]),
-                " - " + DataFetch.getMove(Moves[3])
+                " - " + DataFetch.getMove(Moves[0],this),
+                " - " + DataFetch.getMove(Moves[1],this),
+                " - " + DataFetch.getMove(Moves[2],this),
+                " - " + DataFetch.getMove(Moves[3],this)
             };
 
             return string.Join("\n", format);

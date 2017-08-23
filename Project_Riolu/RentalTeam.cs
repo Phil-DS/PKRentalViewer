@@ -24,7 +24,7 @@ namespace Project_Riolu
 
             foreach(Pokemon p in team)
             {
-                Console.WriteLine(p.ToShowdownFormat(true));
+                Console.WriteLine(p.ToShowdownFormat(true)+"\n");
             }
 
             GLid = data.Skip(0x120).Take(8).ToArray();

@@ -92,6 +92,10 @@ namespace Project_Riolu
 
         private void updateForm()
         {
+            if(rentalTeam == null)
+            {
+                return;
+            }
             Pokemon[] team = rentalTeam.team.ToArray();
             //Pokemon 1
             Pokemon1Data.Text  = team[0].getStatsData();
