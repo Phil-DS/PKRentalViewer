@@ -36,6 +36,8 @@ namespace Project_Riolu
         byte CassetteVersion;
         byte LangId;
         byte[] rawData;
+        string gender;
+        int formID;
         int[] IVs;
 
         public Pokemon(byte[] pkmData)
@@ -67,7 +69,14 @@ namespace Project_Riolu
                 field_20 = pkmData[32];
                 AbilityFlags = pkmData[33];
                 Nature = pkmData[34];
+
                 EncounterFlags = pkmData[35];
+                //From Project Pokemon. 
+                //Stored as: Bit 0: Fateful Encounter, Bit 1: Female, Bit 2: Genderless, Bits 3-7: Form Data.
+
+                gender = ((EncounterFlags & 0x2) != 0) ? "(F) " : ((EncounterFlags & 0x4) != 0) ? "" : "(M) ";
+                formID = EncounterFlags >> 3;
+
                 EffortHp = pkmData[36];
                 EffortAtk = pkmData[37];
                 EffortDef = pkmData[38];
@@ -76,36 +85,28 @@ namespace Project_Riolu
                 EffortSpDef = pkmData[41];
                 field_2A = pkmData[42];
                 Familiarity = pkmData[43];
+                
                 Pokeball = pkmData[44];
                 Level = pkmData[45];
                 CassetteVersion = pkmData[46];
                 LangId = pkmData[47];
 
-                //IVs = new int[6];
-
-                //split the IVs
-                string IV = Convert.ToString(IvFlags, 2);
-                Console.WriteLine(IV);
-                for (int i = 0; i < 30 - IV.Length; i++)
-                {
-                    IV = "0" + IV;
-                }
-
+                Console.WriteLine("Familiarity: " + formID);
+                
                 int[] IVTemp = new int[6];
-                char[] IVBits = IV.ToCharArray();
 
                 for (int i = 0; i < 6; i++)
                 {
-                    IVTemp[i] = Convert.ToInt32(new string(IVBits.Skip(i * 5).Take(5).ToArray()), 2);
+                    IVTemp[i] = ((int)IvFlags>>(i*5))&0x1F;
                 }
 
                 IVs = new int[6]{
-                    IVTemp[5],
-                    IVTemp[4],
-                    IVTemp[3],
-                    IVTemp[1],
                     IVTemp[0],
-                    IVTemp[2]
+                    IVTemp[1],
+                    IVTemp[2],
+                    IVTemp[4],
+                    IVTemp[5],
+                    IVTemp[3]
                 };
             }
             catch(Exception e)
@@ -176,7 +177,7 @@ namespace Project_Riolu
 
             string[] format =
             {
-                DataFetch.getSpecies(MonsNo,0) + /*" (%Gender)*/" @ "+DataFetch.getItem(HoldItem),
+                DataFetch.getSpecies(MonsNo,0) + /*" ("  +")" +*/ " @ " + DataFetch.getItem(HoldItem),
                 "Ability: "+AbilityFlags,
                 "Level: "+Level,
                 "Happiness: 0",

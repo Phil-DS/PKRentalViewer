@@ -36,7 +36,7 @@ namespace Project_Riolu
                 return ID.ToString();
             }
         }
-        public static string getAbility(ushort ID, int form)
+        public static string getAbility(ushort ID, int PID,int form)
         {
             //Update to deal with the 1,2,4.
             
