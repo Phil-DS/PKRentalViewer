@@ -10,10 +10,8 @@ The easiest method. Just copy the QR code onto the clipboard and click "From Cli
 
 ## Known Issues
  * Images for the Pokemon are not implemented as of yet
- * Abilities are labeled at 1,2,4 (These still need to be converted)
- * Forms are not implemented as of yet.
- * Some teams have really weird IVs, and sometimes do not match up with what it looks like in game.
- * Some data validation is missing, and thus can crash at some points
+ * Some QR codes cause Reader errors.
+ * Some form names might be incorrect for Showdown. If that happens, please inform me what is wrong, and I shall update.
 
 ## Dependencies
 
@@ -23,3 +21,4 @@ The easiest method. Just copy the QR code onto the clipboard and click "From Cli
 
 ## Update History
 22/08/2017 Version 0.1: Added Hidden Power type to the move outputs if Hidden Power is found. 
+10/09/2017 Version 1.0: Added Forms and Abilities.
