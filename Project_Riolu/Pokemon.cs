@@ -177,8 +177,8 @@ namespace Project_Riolu
 
             string[] format =
             {
-                DataFetch.getSpecies(MonsNo,0) + /*" ("  +")" +*/ " @ " + DataFetch.getItem(HoldItem),
-                "Ability: "+AbilityFlags,
+                DataFetch.getSpecies(MonsNo,formID) + /*" ("  +")" +*/ " @ " + DataFetch.getItem(HoldItem),
+                "Ability: "+DataFetch.getAbility(MonsNo,formID,AbilityFlags),
                 "Level: "+Level,
                 "Happiness: 0",
                 "EVs: " + EffortHp + " HP / " + EffortAtk + " Atk / " + EffortDef + " Def / " + EffortSpAtk + " SpA / " + EffortSpDef + " SpD / " + EffortSpeed + " Spe",

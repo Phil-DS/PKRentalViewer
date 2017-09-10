@@ -11,10 +11,26 @@ namespace Project_Riolu
     {
         public static string getSpecies(ushort ID,int form)
         {
-            string[] names = getList("Species");
+            
             try
             {
-                return names[ID];
+                if (form > 0)
+                {
+                    //Has a different form from normal
+                    foreach (string line in getList("pokemonFormAbilities"))
+                    {
+                        var currLine = line.Split(',');
+                        if (int.Parse(currLine[0]) == ID)
+                        {
+                            if (int.Parse(currLine[1]) == form)
+                            {
+                                return currLine[2];
+                            }
+                        }
+                    }
+                }
+                return getList("Species")[ID];
+                
             }catch(Exception e)
             {
                 return ID.ToString();
@@ -36,22 +52,43 @@ namespace Project_Riolu
                 return ID.ToString();
             }
         }
-        public static string getAbility(ushort ID, int PID,int form)
+        public static string getAbility(ushort ID, int form,int ability)
         {
             //Update to deal with the 1,2,4.
-            
-            /*string[] names = getList("Abilities");
+            /*
+             * P3DS thoughts: 
+             *  - Split abilities into abilities and forms w/ different abilities
+             *  - Then, first check if Pokemon has a form ID > 0. If it does, check the form list for it
+             *    since it will require more processing than a standard list like normal.
+             *  - Maybe include an exclusion list as well, to help sort the out.
+             * 
+            */
+
             try
             {
-                return names[ID];
+                if (form > 0)
+                {
+                    //Has a different form from normal
+                    foreach (string line in getList("pokemonFormAbilities"))
+                    {
+                        var currLine = line.Split(',');
+                        if (int.Parse(currLine[0]) == ID)
+                        {
+                            if (int.Parse(currLine[1]) == form)
+                            {
+                                return currLine[3+(int)Math.Log(ability,2)];
+                            }
+                        }
+                    }
+                }
+                return getList("pokemonAbilities")[ID].Split(',')[(int)Math.Log(ability, 2)];
+
             }
             catch (Exception e)
             {
-                return ID.ToString();
-            }*/
-
-            return "Not Implemented";
-
+                return ability.ToString();
+            }
+            
         }
         public static string getItem(ushort ID)
         {

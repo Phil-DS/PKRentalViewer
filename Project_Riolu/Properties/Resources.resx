@@ -130,6 +130,12 @@
   <data name="Natures" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\Natures.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
+  <data name="pokemonAbilities" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\pokemonAbilities.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pokemonFormAbilities" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resource\pokemonFormAbilities.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Species" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\Species.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
