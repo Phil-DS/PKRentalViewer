@@ -40,7 +40,7 @@ You ghould have the data all set. So far, this is only known to work in Chrome, 
 
 ## Credits
 
-* [@SciresM](https://twitter.com/sciresm?lang=en) for laying out the process for [Rental QR decoding.] (https://gist.github.com/SciresM/f3d20f8c77f5514f2d142c9760939266)
+* [@SciresM](https://twitter.com/sciresm?lang=en) for laying out the process for [Rental QR decoding.](https://gist.github.com/SciresM/f3d20f8c77f5514f2d142c9760939266)
 
 ## Update History
 22/08/2017 Version 0.1: Added Hidden Power type to the move outputs if Hidden Power is found. 
