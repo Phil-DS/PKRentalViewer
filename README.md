@@ -38,6 +38,10 @@ You ghould have the data all set. So far, this is only known to work in Chrome, 
  * The QR decoder is from [ZXing.Net](https://www.nuget.org/packages/ZXing.Net/). It is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0)
  * The MemeCrypto came from [PKHex](https://www.nuget.org/packages/ZXing.Net/). It is licensed under [GPL V3](https://github.com/kwsch/PKHeX/blob/master/LICENSE.md]
 
+## Credits
+
+* [@SciresM](https://twitter.com/sciresm?lang=en) for laying out the process for [Rental QR decoding.]  (https://gist.github.com/SciresM/f3d20f8c77f5514f2d142c9760939266)
+
 ## Update History
 22/08/2017 Version 0.1: Added Hidden Power type to the move outputs if Hidden Power is found. 
 10/09/2017 Version 1.0: Added Forms and Abilities.
