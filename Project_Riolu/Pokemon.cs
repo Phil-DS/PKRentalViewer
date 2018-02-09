@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -180,10 +181,9 @@ namespace Project_Riolu
                 DataFetch.getSpecies(MonsNo,formID) + /*" ("  +")" +*/ " @ " + DataFetch.getItem(HoldItem),
                 "Ability: "+DataFetch.getAbility(MonsNo,formID,AbilityFlags),
                 "Level: "+Level,
-                "Happiness: 0",
-                "EVs: " + EffortHp + " HP / " + EffortAtk + " Atk / " + EffortDef + " Def / " + EffortSpAtk + " SpA / " + EffortSpDef + " SpD / " + EffortSpeed + " Spe",
+                "EVs: " + ((EffortHp == 0)?"":EffortHp + " HP / ") + ((EffortAtk == 0)?"":EffortAtk + " Atk / ") + ((EffortDef == 0)?"":EffortDef + " Def / ") + ((EffortSpAtk == 0)?"":EffortSpAtk + " SpA / ") + ((EffortSpDef == 0)?"":EffortSpDef + " SpD / ") + ((EffortSpeed == 0)?"":EffortSpeed + " Spe"),
                 DataFetch.getNature(Nature) + " Nature",
-                "IVs: " + IVString[0] + " HP / " + IVString[1] + " Atk / " + IVString[2] + " Def / " + IVString[3] + " SpA / " + IVString[4] + " SpD / " + IVString[5] + " Spe ",
+                "IVs: " + ((IVString[0] == "31")?"":IVString[0] + " HP / ") + ((IVString[1] == "31")?"":IVString[1] + " Atk / ") + ((IVString[2] == "31")?"":IVString[2] + " Def / ") + ((IVString[3] == "31")?"":IVString[3] + " SpA / ") + ((IVString[4] == "31")?"":IVString[4] + " SpD / ") + ((IVString[5] == "31")?"":IVString[5] + " Spe"),
                 " - " + DataFetch.getMove(Moves[0],this),
                 " - " + DataFetch.getMove(Moves[1],this),
                 " - " + DataFetch.getMove(Moves[2],this),
@@ -226,7 +226,8 @@ namespace Project_Riolu
                 "Item: " + DataFetch.getItem(HoldItem),
                 HT,
                 "EVs: " + EffortHp + "H " + EffortAtk + "A " + EffortDef + "B " + EffortSpAtk + "C " + EffortSpDef + "D " + EffortSpeed + "S",
-                "IVs: " + IVs[0] + "/" + IVs[1] + "/" + IVs[2] + "/" + IVs[3] + "/" + IVs[4] + "/" + IVs[5]
+                "IVs: " + IVs[0] + "/" + IVs[1] + "/" + IVs[2] + "/" + IVs[3] + "/" + IVs[4] + "/" + IVs[5],
+                "Nature: " + DataFetch.getNature(Nature)
             };
 
             return string.Join("\n", format);
@@ -255,6 +256,16 @@ namespace Project_Riolu
             {
                 return "No Pokemon in this Slot";
             }
+        }
+
+        public Image getPokemonSprite()
+        {
+            return DataFetch.getSprite(MonsNo, formID);
+        }
+
+        public String getPokemonName()
+        {
+            return DataFetch.getSpecies(MonsNo, formID);
         }
     }
 }

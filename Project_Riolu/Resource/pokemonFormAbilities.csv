@@ -6,9 +6,15 @@
 18,1,Pidgeot-Mega,No Guard,No Guard,No Guard
 19,1,Rattata-Alola,Gluttony,Hustle,Thick Fat
 20,1,Raticate-Alola,Gluttony,Hustle,Thick Fat
+20,2,Raticate-Alola-Totem,Thick Fat,Thick Fat,Thick Fat
 172,1,Pichu-Spiky,Static,Static,Static
-25,2,Pikachu-Cosplay,Lightning Rod,Lightning Rod,Lightning Rod
-25,3,Pikachu-Cap,Static,Static,Static
+25,2,Pikachu-Original,Static,Static,Static
+25,3,Pikachu-Hoenn,Static,Static,Static
+25,4,Pikachu-Sinnoh,Static,Static,Static
+25,5,Pikachu-Unova,Static,Static,Static
+25,6,Pikachu-Kalos,Static,Static,Static
+25,7,Pikachu-Alola,Static,Static,Static
+25,8,Pikachu-Partner,Static,Static,Static
 26,1,Raichu-Alola,Surge Surfer,Surge Surfer,Surge Surfer
 27,1,Sandshrew-Alola,Snow Cloak,Snow Cloak,Slush Rush
 28,1,Sandslash-Alola,Snow Cloak,Snow Cloak,Slush Rush
@@ -29,6 +35,7 @@
 208,1,Steelix-Mega,Sand Force,Sand Force,Sand Force
 103,1,Exeggutor-Mega,Frisk,Frisk,Harvest
 105,1,Marowak-Alola,Cursed Body,Lightning Rod,Rock Head
+105,2,Marowak-Alola,Rock Head,Rock Head,Rock Head
 115,1,Kangaskhan-Mega,Parental Bond,Parental Bond,Parental Bond
 212,1,Scizor-Mega,Technician,Technician,Technician
 127,1,Pinsir-mega,Aerilate,Aerilate,Aerilate
@@ -111,7 +118,22 @@
 718,2,Zygarde-Complete,Power Construct,Power Construct,Power Construct
 719,1,Diancie-Mega,Magic Bounce,Magic Bounce,Magic Bounce
 720,1,Hoopa-Unbound,Magician,Magician,Magician
-741,1,Oricorio-Pa'u,Dancer,Dancer,Dancer
-741,2,Oricorio-Baile,Dancer,Dancer,Dancer
+735,1,Gumshoos-Totem,Adaptability,Adaptability,Adaptability
+738,1,Vikavolt-Totem,Levitate,Levitate,Levitate
+741,1,Oricorio-Pom-Pom,Dancer,Dancer,Dancer
+741,2,Oricorio-Pa'u,Dancer,Dancer,Dancer
 741,3,Oricorio-Sensu,Dancer,Dancer,Dancer
+743,1,Ribombee-Totem,Sweet Veil,Sweet Veil,Sweet Veil
 745,1,Lycanroc-Midnight,Keen Eye,Vital Spirit,No Guard
+745,2,Lycanroc-Dusk,Tough Claws,Tough Claws,Tough Claws
+752,1,Araquanid-Totem,Water Bubble,Water Bubble,Water Bubble
+754,1,Lurantis-Totem,Leaf Guard,Leaf Guard,Leaf Guard
+758,1,Salazzle-Totem,Corrosion,Corrosion,Corrosion
+777,1,Togedemaru-Totem,Sturdy,Sturdy,Sturdy
+778,1,Mimikyu-Busted,Disguise,Disguise,Disguise
+778,2,Mimikyu-Totem,Disguise,Disguise,Disguise
+778,3,Mimikyu-Busted-Totem,Disguise,Disguise,Disguise
+784,1,Kommo-o-Totem,Overcoat,Overcoat,Overcoat
+800,1,Necrozma-Dusk-Mane,Prism Armor,Prism Armor,Prism Armor
+800,2,Necrozma-Dawn-Wings,Prism Armor,Prism Armor,Prism Armor
+800,3,Necrozma-Ultra,Neuroforce,Neuroforce,Neuroforce
