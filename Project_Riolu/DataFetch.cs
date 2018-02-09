@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,17 @@ namespace Project_Riolu
 {
     public class DataFetch
     {
+        public static Image getSprite(ushort id,int form)
+        {
+            try
+            {
+                return (Image)Properties.Resources.ResourceManager.GetObject("_" + id);
+            }catch(Exception e)
+            {
+                return (Image)Properties.Resources.ResourceManager.GetObject("_0");
+            }
+        }
+
         public static string getSpecies(ushort ID,int form)
         {
             
